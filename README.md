@@ -1,4 +1,4 @@
-# AlphaLab: Robotaxi Industry Monitor
+# Robotaxi_lark_newsflow: Robotaxi Industry Monitor
 
 An open-source AI agent skill suite for automated tracking of the global Robotaxi industry. Built for [QoderWork](https://docs.qoder.com/qoderwork/introduction) — a desktop agentic assistant platform.
 
