@@ -1,0 +1,362 @@
+{
+  "version": "1.0",
+  "description": "Robotaxi Monitor Data Source Configuration",
+  "tiers": {
+    "T1": {
+      "name": "Core Players Official",
+      "description": "Official blogs and IR pages of top Robotaxi companies",
+      "sources": [
+        {
+          "id": "waymo-official",
+          "name": "Waymo",
+          "tier": "T1",
+          "lang": "en",
+          "type": "official_blog",
+          "url": "https://waymo.com/blog",
+          "query_template": "site:waymo.com blog robotaxi 2026",
+          "priority": 0,
+          "focus": "Operational expansion, technology updates, safety data, city launches"
+        },
+        {
+          "id": "tesla-robotaxi",
+          "name": "Tesla Robotaxi",
+          "tier": "T1",
+          "lang": "en",
+          "type": "official_ir",
+          "url": "https://ir.tesla.com",
+          "query_template": "site:tesla.com OR site:ir.tesla.com robotaxi 2026",
+          "priority": 0,
+          "focus": "FSD updates, Robotaxi service expansion, regulatory approvals"
+        },
+        {
+          "id": "zoox-official",
+          "name": "Zoox (Amazon)",
+          "tier": "T1",
+          "lang": "en",
+          "type": "official_blog",
+          "url": "https://zoox.com/blog",
+          "query_template": "site:zoox.com robotaxi 2026",
+          "priority": 0,
+          "focus": "Purpose-built vehicle operations, city expansion, safety testing"
+        },
+        {
+          "id": "baidu-apollo",
+          "name": "Baidu Apollo Go",
+          "tier": "T1",
+          "lang": "zh",
+          "type": "official_ir",
+          "url": "https://ir.baidu.com",
+          "query_template": "Baidu Apollo Go robotaxi 2026",
+          "priority": 0,
+          "focus": "Order volume, city expansion, overseas expansion, financial data"
+        },
+        {
+          "id": "pony-ai",
+          "name": "Pony.ai",
+          "tier": "T1",
+          "lang": "zh",
+          "type": "official_ir",
+          "url": "https://ir.pony.ai",
+          "query_template": "site:ir.pony.ai OR Pony.ai robotaxi 2026",
+          "priority": 0,
+          "focus": "Profitability progress, fleet size, city expansion, financials"
+        },
+        {
+          "id": "weride",
+          "name": "WeRide",
+          "tier": "T1",
+          "lang": "zh",
+          "type": "official_ir",
+          "url": "https://ir.weride.ai",
+          "query_template": "site:ir.weride.ai OR WeRide robotaxi 2026",
+          "priority": 0,
+          "focus": "Overseas operations, GXR delivery, partnership signings, financials"
+        }
+      ]
+    },
+    "T2": {
+      "name": "Industry Players",
+      "description": "Important participants in the Robotaxi ecosystem, including tech suppliers, emerging operators, and traditional OEM autonomous driving divisions",
+      "sources": [
+        {
+          "id": "momenta",
+          "name": "Momenta",
+          "tier": "T2",
+          "lang": "zh",
+          "type": "company",
+          "url": "https://momenta.ai",
+          "query_template": "Momenta autonomous driving 2026 OR Momenta robotaxi 2026",
+          "priority": 1,
+          "focus": "Mass production deployment, partner OEMs, technology updates"
+        },
+        {
+          "id": "wayve",
+          "name": "Wayve",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://wayve.ai",
+          "query_template": "Wayve autonomous driving 2026 OR Wayve robotaxi",
+          "priority": 1,
+          "focus": "End-to-end AI driving, London testing, funding progress"
+        },
+        {
+          "id": "42dot",
+          "name": "42 Dot (Hyundai)",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://42dot.ai",
+          "query_template": "42dot robotaxi 2026 OR 42dot autonomous driving",
+          "priority": 1,
+          "focus": "Korea Robotaxi operations, Hyundai Group autonomous driving strategy"
+        },
+        {
+          "id": "hyundai-roboride",
+          "name": "Hyundai RoboRide",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://www.hyundaimotorgroup.com",
+          "query_template": "Hyundai RoboRide 2026 OR Hyundai robotaxi 2026",
+          "priority": 1,
+          "focus": "Korea operational data, new city launches, vehicle deployment"
+        },
+        {
+          "id": "mobileye",
+          "name": "Mobileye (Intel)",
+          "tier": "T2",
+          "lang": "en",
+          "type": "official_ir",
+          "url": "https://ir.mobileye.com",
+          "query_template": "Mobileye robotaxi 2026 OR Mobileye autonomous driving",
+          "priority": 1,
+          "focus": "SuperVision/Chauffeur progress, OEM partnerships, Robotaxi solutions"
+        },
+        {
+          "id": "motional",
+          "name": "Motional (Hyundai+Aptiv)",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://motional.com",
+          "query_template": "Motional robotaxi 2026 OR Motional autonomous driving",
+          "priority": 1,
+          "focus": "US operations restart, Uber/Lyft partnerships, Ioniq 5 deployment"
+        },
+        {
+          "id": "moia",
+          "name": "MOIA (Volkswagen)",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://www.moia.io",
+          "query_template": "MOIA robotaxi 2026 OR MOIA autonomous shuttle",
+          "priority": 1,
+          "focus": "European operations, VW Group autonomous driving strategy"
+        },
+        {
+          "id": "avride",
+          "name": "Avride",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://avride.ai",
+          "query_template": "Avride robotaxi 2026 OR Avride autonomous delivery",
+          "priority": 1,
+          "focus": "Autonomous delivery/mobility, Uber partnership, city deployment"
+        },
+        {
+          "id": "cruise-gm",
+          "name": "Cruise / GM",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://getcruise.com",
+          "query_template": "Cruise robotaxi 2026 OR GM autonomous driving 2026",
+          "priority": 1,
+          "focus": "Restart progress, safety improvements, city re-launches"
+        },
+        {
+          "id": "aurora",
+          "name": "Aurora Innovation",
+          "tier": "T2",
+          "lang": "en",
+          "type": "official_ir",
+          "url": "https://aurora.tech",
+          "query_template": "Aurora Innovation autonomous 2026 OR Aurora robotaxi",
+          "priority": 1,
+          "focus": "Truck autonomous driving, passenger Robotaxi plans"
+        },
+        {
+          "id": "xpeng-ad",
+          "name": "XPeng Autonomous Driving",
+          "tier": "T2",
+          "lang": "zh",
+          "type": "company",
+          "url": "https://www.xiaopeng.com",
+          "query_template": "XPeng autonomous driving 2026 OR XPeng robotaxi 2026",
+          "priority": 1,
+          "focus": "XNGP progress, Robotaxi strategy, overseas AD"
+        },
+        {
+          "id": "enroute",
+          "name": "DeepRoute",
+          "tier": "T2",
+          "lang": "zh",
+          "type": "company",
+          "url": "https://www.deeproute.com",
+          "query_template": "DeepRoute 2026 OR DeepRoute robotaxi 2026",
+          "priority": 1,
+          "focus": "Mass production solutions, partner OEMs, overseas expansion"
+        },
+        {
+          "id": "woven-toyota",
+          "name": "Woven by Toyota",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://woven.toyota",
+          "query_template": "Woven Toyota autonomous 2026 OR Toyota robotaxi",
+          "priority": 1,
+          "focus": "Toyota autonomous driving strategy, Woven City progress"
+        },
+        {
+          "id": "nuro",
+          "name": "Nuro",
+          "tier": "T2",
+          "lang": "en",
+          "type": "company",
+          "url": "https://nuro.ai",
+          "query_template": "Nuro autonomous delivery 2026 OR Nuro robotaxi",
+          "priority": 1,
+          "focus": "Autonomous delivery, R3 vehicle, commercial partnerships"
+        }
+      ]
+    },
+    "T3": {
+      "name": "Industry Media",
+      "description": "Media sources for in-depth Robotaxi industry coverage",
+      "sources": [
+        {
+          "id": "techcrunch-av",
+          "name": "TechCrunch (Autonomous Driving)",
+          "tier": "T3",
+          "lang": "en",
+          "type": "media",
+          "query_template": "site:techcrunch.com robotaxi OR autonomous driving 2026",
+          "priority": 2
+        },
+        {
+          "id": "reuters-av",
+          "name": "Reuters (Autonomous Driving)",
+          "tier": "T3",
+          "lang": "en",
+          "type": "media",
+          "query_template": "site:reuters.com robotaxi OR autonomous vehicle 2026",
+          "priority": 2
+        },
+        {
+          "id": "electrek",
+          "name": "Electrek",
+          "tier": "T3",
+          "lang": "en",
+          "type": "media",
+          "query_template": "site:electrek.co robotaxi OR Tesla autonomous 2026",
+          "priority": 2
+        },
+        {
+          "id": "theverge-av",
+          "name": "The Verge (Autonomous Driving)",
+          "tier": "T3",
+          "lang": "en",
+          "type": "media",
+          "query_template": "site:theverge.com robotaxi OR self-driving 2026",
+          "priority": 2
+        },
+        {
+          "id": "qbitai",
+          "name": "QbitAI",
+          "tier": "T3",
+          "lang": "zh",
+          "type": "media",
+          "query_template": "site:qbitai.com robotaxi OR autonomous driving 2026",
+          "priority": 2
+        },
+        {
+          "id": "leiphone",
+          "name": "LeiPhNet",
+          "tier": "T3",
+          "lang": "zh",
+          "type": "media",
+          "query_template": "site:leiphone.com autonomous driving OR robotaxi 2026",
+          "priority": 2
+        },
+        {
+          "id": "36kr-av",
+          "name": "36Kr",
+          "tier": "T3",
+          "lang": "zh",
+          "type": "media",
+          "query_template": "site:36kr.com autonomous driving OR robotaxi 2026",
+          "priority": 2
+        },
+        {
+          "id": "autocar-av",
+          "name": "AutoCar AI",
+          "tier": "T3",
+          "lang": "zh",
+          "type": "media",
+          "query_template": "autonomous driving robotaxi 2026",
+          "priority": 2
+        },
+        {
+          "id": "d1ev",
+          "name": "D1EV",
+          "tier": "T3",
+          "lang": "zh",
+          "type": "media",
+          "query_template": "site:d1ev.com autonomous driving OR robotaxi 2026",
+          "priority": 2
+        }
+      ]
+    },
+    "T4": {
+      "name": "Policy & Research",
+      "description": "Regulatory updates and industry research reports",
+      "sources": [
+        {
+          "id": "nhtsa-av",
+          "name": "NHTSA (US)",
+          "tier": "T4",
+          "lang": "en",
+          "type": "regulator",
+          "query_template": "site:nhtsa.gov autonomous vehicle OR robotaxi 2026",
+          "priority": 3
+        },
+        {
+          "id": "china-policy",
+          "name": "China Autonomous Driving Policy",
+          "tier": "T4",
+          "lang": "zh",
+          "type": "regulator",
+          "query_template": "autonomous driving policy 2026 OR robotaxi license 2026",
+          "priority": 3
+        }
+      ]
+    }
+  },
+  "fallback_queries": {
+    "description": "Fallback queries: triggered when T1-T4 total hits < 5",
+    "queries": [
+      "Robotaxi 2026 latest progress",
+      "Autonomous taxi 2026 commercialization",
+      "Apollo Go robotaxi 2026",
+      "Waymo robotaxi expansion 2026",
+      "Pony.ai OR WeRide 2026",
+      "Tesla robotaxi 2026",
+      "Mobileye OR Momenta robotaxi 2026",
+      "autonomous ride-hailing 2026"
+    ]
+  }
+}

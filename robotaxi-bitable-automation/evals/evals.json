@@ -1,0 +1,23 @@
+{
+  "skill_name": "robotaxi-bitable-automation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run today's Robotaxi monitoring daily report, and write deduplicated new content to the Projects & Milestones table, don't update master tables.",
+      "expected_output": "Should execute daily monitoring Plan B: search, dedup, write to projects table, output pending confirmation summary, do not update master tables.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I confirm syncing item 1 from today's report, but only sync partners, don't update operational status.",
+      "expected_output": "Should read item 1 from projects table, only update partner-related master tables/fields per user's confirmed scope, and write back sync status to projects table.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Overseas news mentions Miami and Abu Dhabi, when archiving note that the region table city names are in Chinese.",
+      "expected_output": "Should preserve original city names, auto-translate Chinese names, attempt to match Region Dictionary using Chinese name and city English name, mark as pending human confirmation if unable to reliably match.",
+      "files": []
+    }
+  ]
+}
