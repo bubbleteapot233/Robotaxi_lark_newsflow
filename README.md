@@ -139,6 +139,95 @@ The Bitable automation skill works with 5 interconnected tables:
 
 See `robotaxi-bitable-automation/references/table-schema.md` for complete field definitions.
 
+## Bitable Self-Setup Guide
+
+The Bitable automation requires a Feishu/Lark Bitable with 5 tables. Since we can't share a template link (corporate tenant restrictions), here's how to set it up yourself.
+
+### Step 1: Create a New Bitable
+
+In your Feishu/Lark workspace, create a new Bitable. Note the **app_token** from the URL:
+
+```
+https://<your-tenant>.feishu.cn/base/<app_token>
+```
+
+### Step 2: Create the 5 Tables
+
+Create these tables in order (base tables first, then tables with cross-references):
+
+**Phase 1 — Base tables (no dependencies):**
+
+1. **企业基本信息表** (Company Info) — Primary field: `企业` (Text)
+2. **地区字典表** (Region Dictionary) — Primary field: `城市` (Text)
+
+**Phase 2 — Dependent tables:**
+
+3. **项目与里程碑表** (Projects & Milestones) — Primary field: `事件名称` (Text)
+4. **企业 × 地区 运营状态表** (Company × Region Ops Status) — Primary field: `企业 - 地区` (Formula: `关联企业 & " - " & 关联城市`)
+5. **合作伙伴明细** (Partner Details) — Primary field: `合作方` (Text)
+
+### Step 3: Add Fields
+
+For each table, add fields per `references/table-schema.md`. Key field types:
+
+| Field Type | How to Create |
+|------------|---------------|
+| Text | `type: "text"` |
+| Single Select | `type: "select", multiple: false, options: [...]` |
+| Multi Select | `type: "select", multiple: true, options: [...]` |
+| Date | `type: "datetime"` |
+| Link (cross-table) | `type: "link", link_table: "<target_table_name>"` |
+| Formula | `type: "formula", expression: "..."` |
+| Lookup | `type: "lookup", from: "...", select: "...", where: {...}` |
+
+**Important field groups by table:**
+
+- **Company Info**: 企业属性 (select), 总部国家 (select), 产品线 (multi-select), OEM合作方 (multi-select), 盈利结构层级 (multi-select), etc.
+- **Region Dictionary**: 城市英文名 (text), 国家 (select), 区域 (select), 地域标签 (select), 政策准入状态 (select), 当地政策友好度 (select)
+- **Projects & Milestones**: 具体归属企业 (link→Company Info), 目标城市 (link→Region Dictionary), 归属主体分类 (select), 日期 (datetime), 状态标签 (select), 事件类型 (select), 链接 (text/url), plus all source/verification/sync task fields
+- **Company × Region Ops Status**: 关联企业 (link→Company Info), 关联城市 (link→Region Dictionary), 当前运营状态 (select), 合作模式 (select), plus fleet/partner fields
+- **Partner Details**: 合作方 (text), 伙伴分类 (select), 合作状态 (select), plus reverse links to Company × Region
+
+### Step 4: Configure the Skill
+
+After creating all tables, update these files with your Bitable info:
+
+1. **`robotaxi-bitable-automation/SKILL.md`**: Replace `<YOUR_BITABLE_URL>` and `<YOUR_APP_TOKEN>` with your actual values. Replace all `<your_table_id>` placeholders with the actual table IDs (found in each table's URL or via lark-cli `+table-list`).
+
+2. **`robotaxi-bitable-automation/references/table-schema.md`**: Same replacements.
+
+3. **`robotaxi-bitable-automation/references/daily-cron-template.md`**: Replace `<YOUR_BITABLE_URL>` with your actual URL.
+
+### Step 5: Authorize lark-cli
+
+```bash
+lark-cli auth login --scope "base:table:read base:field:read base:record:read base:field:update base:field:create base:record:update base:record:create"
+```
+
+### Quick Reference: Select Options
+
+For the most commonly needed select fields, here are the options to copy:
+
+**归属主体分类**: 本公司项目 / 竞品企业动态 / 行业动态
+
+**事件类型**: 自动驾驶测试 / 战略合作 / 商业化运营 / 政策动态
+
+**当前运营状态**: 宣布进入 / 路测中 / 示范运营 / 有人商业化运营 / 全无人商业运营 / 已暂停 / 已退出
+
+**信息确认状态**: 已确认 / 待核实 / 部分确认 / 已证伪 / 暂缓跟进
+
+**可信度**: 高 / 中 / 低
+
+**同步状态**: 未处理 / 待人工确认 / 已同步 / 无需同步 / 同步失败
+
+**合作状态**: 谈判中 / 生效中 / 已暂停 / 已结束
+
+**伙伴分类**: 出行平台 / 车队运营 / 当地政府机构 / 汽车OEM / 运营服务商 / 本地运营商/车队管理方 / 技术授权对象 / 其他
+
+**区域**: 亚洲 / 中东 / 欧洲 / 美洲
+
+**地域标签**: 国内 / 海外 / 港澳台
+
 ## Workflow: Data Pipeline
 
 ```
